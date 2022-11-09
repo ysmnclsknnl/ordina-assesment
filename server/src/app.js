@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import userRouter from "./routes/user.js";
+// import userRouter from "./routes/user.js";
 
 // Create an express server
 const app = express();
@@ -14,6 +14,6 @@ app.use(cors());
 
 /****** Attach routes ******/
 // We use /api/ at the start of every route
-app.use("/api/user", userRouter);
+// app.use("/api/user", userRouter);
 
 export default app;
