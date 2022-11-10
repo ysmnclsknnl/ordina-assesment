@@ -13,7 +13,7 @@ import { useState } from "react";
  * performFetch - this function will trigger the fetching.
  * cancelFetch - this function will cancel the fetch, call it when your component is unmounted
  */
-const useFetch = (route, onReceived) => {
+const useFetch = (url, onReceived) => {
   /**
    * We use the AbortController which is supported by all modern browsers to handle cancellations
    * For more info: https://developer.mozilla.org/en-US/docs/Web/API/AbortController
@@ -40,9 +40,6 @@ const useFetch = (route, onReceived) => {
     };
 
     const fetchData = async () => {
-      // We add the /api subsection here to make it a single point of change if our configuration changes
-      const url = `${process.env.BASE_SERVER_URL}/api${route}`;
-
       const res = await fetch(url, { ...baseOptions, ...options, signal });
 
       if (!res.ok) {
