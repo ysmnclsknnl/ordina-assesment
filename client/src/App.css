@@ -1,38 +1,99 @@
-.App {
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+:root {
+  --clr-white: #fff;
+  --clr-primary: #282c34;
+  --clr-black: #000;
+  --clr-dark-grey: #7f8b8f;
+  --clr-red: #dc281e;
+
+  --ff-primary: "Open Sans", sans-serif;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --margin: 1rem;
+  --padding: 0.5rem;
+  --line-height: 1.5;
+}
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--clr-white);
+  color: var(--clr-black);
+  line-height: var(--line-height);
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-row-100 {
+  width: 100%;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.v-centered {
+  align-items: center;
+}
+
+.flex-col {
+  width: 50%;
+}
+
+.input-container {
+  margin-bottom: 2rem;
+}
+
+.container {
+  padding: 1.5rem;
+}
+
+.centered {
+  width: 70%;
+  margin: auto;
+}
+
+.text-center {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  color: black;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (min-width: 576px) {
+  .app-container {
+    max-width: 540px;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width: 768px) {
+  .app-container {
+    max-width: 720px;
   }
-  to {
-    transform: rotate(360deg);
+}
+@media (min-width: 992px) {
+  .app-container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .app-container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .app-container {
+    max-width: 89%;
   }
 }
