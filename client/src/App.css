@@ -29,6 +29,7 @@ body {
   background: var(--clr-white);
   color: var(--clr-black);
   line-height: var(--line-height);
+  margin-left:2rem;
 }
 
 .flex-row {
