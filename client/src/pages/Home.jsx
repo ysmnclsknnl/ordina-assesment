@@ -18,7 +18,11 @@ const Home = () => {
           },
         });
         const json = await data.json();
+        console.log(json);
+        //get icao24, origin Country and longtitude and latitude from the states property of json
+        const dataToProcess=json.states.map(state=>state.filter(element=>[0,2,5,6].includes(element)))
         setFlightData(json);
+       
       } catch (error) {
         setError(error);
       } finally {
@@ -29,6 +33,8 @@ const Home = () => {
     fetchData(netherlandsFlightURL);
   }, []);
 
+
+ 
   return (
     <div>
       <p>The Netherlands Flights</p>
@@ -36,11 +42,9 @@ const Home = () => {
         <div>
           <p>{` Number Of Flights Now :${flightData.states.length}`}</p>
           <h2>Countries:</h2>
-          <div>
-            {topCountries(flightData.states).map((state, index) => (
-              <p key={index}>{state}</p>
-            ))}
-          </div>
+          { 
+   topCountries(flightData.states).map(country=><p key={country.name}> {`${country.name} : ${country.value}`}</p>)
+  }
         </div>
       )}
     </div>
