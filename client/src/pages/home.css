@@ -1,0 +1,11 @@
+p {
+  max-width: 15rem;
+  margin: 1rem;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.warning {
+  background-color: tomato;
+}
