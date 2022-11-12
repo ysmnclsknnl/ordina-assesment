@@ -5,25 +5,38 @@ export const getTopCountries = (flightData) => {
     .reduce((accumulatedStates, currentState) => {
       return [...accumulatedStates, ...currentState];
     }, []);
-  console.log(statesArray);
-  console.log("states Array above");
+
   //Get the number of Flights Corresponding to a country
-  console.log("stateArray is");
-  console.log(statesArray);
   const countriesAndFlightNumbers = statesArray
-    .map((state) => state[1])
-    .reduce((accCountries, currentCountry) => {
+    .map((state) => [state[0], state[1]])
+    .reduce((accCountries, currentState) => {
+      const currentIcao24 = currentState[0];
+      const currentCountry = currentState[1];
+
+      //If accumulatedCountries object does not have current country create a property with the name of the current country
       if (!accCountries[`${currentCountry}`]) {
-        return { ...accCountries, [`${currentCountry}`]: 1 };
+        return { ...accCountries, [`${currentCountry}`]: [currentIcao24] };
       }
+      //If accumulatedCountries object has a property with the name of the current country check if this property inludes the flight with the number of current icao24 number
+      //If it inclues do not add
+      if (accCountries[`${currentCountry}`].includes(currentIcao24)) {
+        return accCountries;
+      }
+      //If it does not include add  the current flight number(icao24) to the property
       return {
         ...accCountries,
-        [`${currentCountry}`]: accCountries[`${currentCountry}`] + 1,
+        [`${currentCountry}`]: [
+          ...accCountries[`${currentCountry}`],
+          currentIcao24,
+        ],
       };
     }, {});
 
-  //Create and array from contriesAndFlightNumbers Object a
-  const valuesOfFLights = Object.values(countriesAndFlightNumbers);
+  //Create and array including the values from contriesAndFlightNumbers Object
+  const valuesOfFLights = Object.values(countriesAndFlightNumbers).map(
+    (element) => element.length
+  );
+
   //Get top three Values by sorting the valuesofFlightsArray
   const topThreeValues = [...valuesOfFLights].sort((a, b) => b - a).slice(0, 3);
   const firstValue = topThreeValues[0];
