@@ -41,8 +41,8 @@ const mySlice = createSlice({
         states: action.payload.states.map((state) => [
           state[0],
           state[2],
-          state[5],
-          state[6],
+          state[11],
+          state[13],
         ]),
       };
       return {
