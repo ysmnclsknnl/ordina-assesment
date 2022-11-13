@@ -1,5 +1,5 @@
 export const getAltitudes = (flightData) => {
-  const pollingInterval = 60;
+  const pollingInterval = 5;
 
   //Latest Flight Data and The Layers Corresponding to Them
   const flightsPerLayer = flightData[flightData.length - 1]["states"].map(
@@ -17,25 +17,5 @@ export const getAltitudes = (flightData) => {
       };
     }
   );
-  console.log("LastFlightData");
-  console.log(
-    [...flightsPerLayer].sort((a, b) => a.altitudeLayer - b.altitudeLayer)
-  );
   return [...flightsPerLayer].sort((a, b) => a.altitudeLayer - b.altitudeLayer);
 };
-
-// .reduce((accumulatedFlightsPerLayer, currentFlight) => {
-//     if (!accumulatedFlightsPerLayer[`${currentFlight.altitudeLayer}`]) {
-//       return {
-//         ...accumulatedFlightsPerLayer,
-//         [`${currentFlight.altitudeLayer}`]: [currentFlight.flightNumber],
-//       };
-//     }
-//     return {
-//       ...accumulatedFlightsPerLayer,
-//       [`${currentFlight.altitudeLayer}`]: [
-//         ...accumulatedFlightsPerLayer[`${currentFlight.altitudeLayer}`],
-//         currentFlight.flightNumber,
-//       ],
-//     };
-//   }, {});

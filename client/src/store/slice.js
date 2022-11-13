@@ -7,6 +7,8 @@ const initialState = {
   error: null,
 };
 
+//Normally Authorization basic data should be in environment variable .
+
 export const getFlightData = createAsyncThunk(
   "flightData",
   async (_, { rejectWithValue }) => {
@@ -17,7 +19,6 @@ export const getFlightData = createAsyncThunk(
         },
       });
       const json = await data.json();
-      console.log(json);
       return json;
     } catch (error) {
       return rejectWithValue(error);
