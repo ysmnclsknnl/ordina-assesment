@@ -1,8 +1,11 @@
 export const getTotalFlights = (flightData) => {
   const totalTimeAllocated =
     (flightData[flightData.length - 1]["time"] - flightData[0]["time"]) /
-    (60 * 60);
-
+      3600 ===
+    0
+      ? 1
+      : (flightData[flightData.length - 1]["time"] - flightData[0]["time"]) /
+        3600;
   //remove the duplicates of the flight numbers (icao24) and get correct total flight numbers
   const totalFlights = flightData
     .map((flight) => flight.states)
@@ -15,6 +18,5 @@ export const getTotalFlights = (flightData) => {
       }
       return [...accumulatedIcao24, currentState[0]];
     }, []).length;
-
   return Math.round(totalFlights / totalTimeAllocated);
 };
