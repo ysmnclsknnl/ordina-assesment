@@ -12,17 +12,17 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-   
-    const fetchInterval = setInterval(()=>{dispatch(getFlightData())}, 5000);
+    const fetchInterval = setInterval(() => {
+      dispatch(getFlightData());
+    }, 5000);
     return () => {
-       
       clearInterval(fetchInterval);
     };
   }, [dispatch]);
 
   if (flightData.length > 0) {
     return (
-      <div>
+      <div className="home-container">
         <h1>The Flights Over Netherlands</h1>
         <section>
           <h2>Number Of Flights Per Hour</h2>
@@ -31,9 +31,12 @@ const Home = () => {
 
         <section>
           <h2> Top 3 Countries:</h2>
-          {getTopCountries(flightData).map((country, index) =>  country["name"] &&(
-            <p key={index}> {`${country["name"]} : ${country.value}`}</p>
-          ))}
+          {getTopCountries(flightData).map(
+            (country, index) =>
+              country["name"] && (
+                <p key={index}> {`${country["name"]} : ${country.value}`}</p>
+              )
+          )}
         </section>
         <section>
           <h2> Flight Number : Layer</h2>

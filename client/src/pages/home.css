@@ -9,3 +9,9 @@ p {
 .warning {
   background-color: tomato;
 }
+
+.home-container {
+  margin-top: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+}
