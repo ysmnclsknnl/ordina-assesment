@@ -26,7 +26,7 @@ const Home = () => {
         <h1>The Flights Over Netherlands</h1>
         <section>
           <h2>Number Of Flights Per Hour</h2>
-          {flightData.length > 1 && <p>{getTotalFlights(flightData)}</p>}
+          {flightData.length && <p>{getTotalFlights(flightData)}</p>}
         </section>
 
         <section>
@@ -42,7 +42,8 @@ const Home = () => {
           <h2> Flight Number : Layer</h2>
           {getAltitudes(flightData).map(
             ({ flightNumber, warning, altitudeLayer }) =>
-              altitudeLayer !== null && (
+              altitudeLayer !== null &&
+              altitudeLayer >= 0 && (
                 <div className="flex-row" key={flightNumber}>
                   <p className={`${warning ? "warning" : ""}`}>
                     {flightNumber}

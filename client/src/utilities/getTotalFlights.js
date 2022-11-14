@@ -1,7 +1,8 @@
 export const getTotalFlights = (flightData) => {
   const totalTimeAllocated =
-    (flightData[flightData.length - 1]["time"] - flightData[0]["time"]) / 3600 <
-    1
+    (flightData[flightData.length - 1]["time"] - flightData[0]["time"]) /
+      3600 ===
+    0
       ? 1
       : (flightData[flightData.length - 1]["time"] - flightData[0]["time"]) /
         3600;
